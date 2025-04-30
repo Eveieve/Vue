@@ -14,7 +14,8 @@ createApp({ // {} 는 객체라는 뜻
     },
     //data와 methods를 사용해 렌더링
     render(){
-        return h('div', [h('p', this.message), h('button', {onClick : this.reverse}, 'Reverse'),]);
+        return h('div', [h('p', this.message), 
+            h('button', {onClick : this.reverse}, 'Reverse'),]);
     },
 
 }).mount('#app');

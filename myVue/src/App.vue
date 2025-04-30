@@ -1,47 +1,27 @@
-<script setup> // script tag 안에 import 한다
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+export default {
+
+ 
+    methods : { // define methods here 
+    clickHandler() {
+      alert('click!');
+    },
+
+    dbclickHandler() {
+      alert('dbclick');
+    }
+    },
+  
+}
 </script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+<!-- <button type="button" v-on:click="clickHandler">click</button>
+<button type="button" v-on:dbclick="clickHandler">dbclick</button> -->
+<button type="button" @click="clickHandler">click</button>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+<style>
+  .blue-color {
+  color: blue;
 }
 </style>
