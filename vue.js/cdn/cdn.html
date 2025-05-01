@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
+    <!-- 작업할 영역  -->
+    <div id="app">{{message}}</div>
+    <script>
+        const { createApp } = Vue; // create Vue application object 
+        // 뷰객체의 속성 중에 createApp 함수를 호출함. 비구조화 할당으로 변수에 할당함. 
+
+        // createApp함수.. 매개변수를 통해 설정하기. 매개 변수를 data속성이 정의된 객체를 매개변수로.. 
+        createApp({ // 생성자..? 
+            data() {
+                return { message: "Hello Vue.js!" };
+            },
+
+        }).mount("#app"); // 띄우기, 아까 만든 div id = "app"....
+    </script>
+</body>
+
+</html>

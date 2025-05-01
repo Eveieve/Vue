@@ -1,24 +1,31 @@
 <script>
 export default {
 
+  data(){
+    return {
+        number : 0,
+    };
+  },
  
     methods : { // define methods here 
-    clickHandler() {
-      alert('click!');
-    },
+      onkeyHandler() {
+  
+        console.log('this is an enter key');
+      },
 
-    dbclickHandler() {
-      alert('dbclick');
-    }
+      increment() {
+        // 'this' is the button event
+        this.number++;
+      }
     },
   
 }
 </script>
 <template>
-<!-- <button type="button" v-on:click="clickHandler">click</button>
-<button type="button" v-on:dbclick="clickHandler">dbclick</button> -->
-<button type="button" @click="clickHandler">click</button>
-
+<!-- <input type="text" @keyup="($event) => onkeyupHandler($event)">
+<input type="text" @keyup.enter = "onkeyupHandler"> -->
+<h1>{{ number }}</h1>
+<button type="button" @click="increment">increment!</button>
 </template>
 <style>
   .blue-color {
