@@ -10,8 +10,10 @@ export default {
   }, 
 
   methods : {
-    operation() {
+    operation(e) { // e is the event 
       console.log('clicked');
+      const n = e.currentTarget.value;
+      console.log(n);
     }
   },
 }
