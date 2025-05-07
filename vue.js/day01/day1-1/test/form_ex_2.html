@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="loginForm">
+        <label for="uid">login id:</label><input type="text" id="uid">
+        <label for="pwd">password</label><input type="text" id="pwd">
+        <button>login</button>
+    </form>
+    <script>
+        // 바디 태그 안에있는것들은 document 객체에 다 담김
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault(); // 원래 form안에서 event 발생하면 수행하는 것들 실행하지 말라
+
+            // 1. 요소에 입력된 값 가져오기 
+            const uid = document.getElementById('uid').value; // label에 넣은 id 값 
+            const upw = document.getElementById('pwd').value;
+
+            // 2. ajax 요청 만들기 
+            const xhr = new XMLHttpRequest(); // 통신 객체를 만들기 
+            xhr.open('POST', '/login_process', true); //
+
+            // 3. ajax 응답 설정하기 
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+
+                    if (xhr.status === 200) {
+                        // request is 'success'
+                        const response = xhr.responseText;
+                        console.log(response);
+                    } else {
+                        console.error('Request failed with status' + shr.status);
+                    }
+                }
+            }
+
+            // 데이터 전송 준비하기 
+            const formData = new FormData();
+            FormData.append('uid', uid);
+            FormData.append('pwd', pwd);
+
+            xhr.send(formData);
+        });
+    </script>
+</body>
+
+</html>

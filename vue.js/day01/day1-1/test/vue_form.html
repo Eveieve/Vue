@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Login Form</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <form @submit.prevent="handleSubmit">
+            <label for="uid">login id:</label>
+            <input type="text" v-model="uid" id="uid">
+
+            <label for="pwd">password:</label>
+            <input type="password" v-model="pwd" id="pwd">
+
+            <button type="submit">login</button>
+        </form>
+        <p v-if="responseMessage">Response: {{ responseMessage }}</p>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                const uid = ref('');
+                const pwd = ref('');
+                const responseMessage = ref('');
+
+                const handleSubmit = () => {
+                    const formData = new FormData();
+                    formData.append('uid', uid.value);
+                    formData.append('pwd', pwd.value);
+
+                    fetch('/login_process', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.text();
+                        })
+                        .then(data => {
+                            responseMessage.value = data;
+                        })
+                        .catch(error => {
+                            responseMessage.value = 'Error: ' + error.message;
+                        });
+                }
+
+                return {
+                    uid,
+                    pwd,
+                    responseMessage,
+                    handleSubmit
+                }
+            }
+        }).mount('#app');
+    </script>
+
+    <script>
+        const express = require('express');
+        const app = express();
+        const port = 3000;
+
+        app.use(express.urlencoded({ extended: true }));
+
+        app.post('/login_process', (req, res) => {
+            const uid = req.body.uid;
+            const pwd = req.body.pwd;
+
+            console.log('Received login info:', uid, pwd);
+
+            if (uid === 'test' && pwd === '1234') {
+                res.send('Login Success');
+            } else {
+                res.send('Login Failed');
+            }
+        });
+
+        app.listen(port, () => {
+            console.log(`Server running at http://localhost:${port}`);
+        });
+
+    </script>
+</body>
+
+</html>
