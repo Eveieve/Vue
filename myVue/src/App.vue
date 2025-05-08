@@ -1,34 +1,34 @@
 <script>
+import UserProfile from './components/UserProfile.vue';
 export default {
 
-  data(){
-    return {
-        number : 0,
-    };
-  },
- 
-    methods : { // define methods here 
-      onkeyHandler() {
-  
-        console.log('this is an enter key');
-      },
+  components : { 
+    UserProfile
+  }, 
 
-      increment() {
-        // 'this' is the button event
-        this.number++;
-      }
-    },
-  
+  data() {
+    return {
+      userName : 'John Mayer',
+      age : 25,
+      phone : "",
+      address : "",
+    };
+  }
 }
+
+
 </script>
+
+
 <template>
-<!-- <input type="text" @keyup="($event) => onkeyupHandler($event)">
-<input type="text" @keyup.enter = "onkeyupHandler"> -->
-<h1>{{ number }}</h1>
-<button type="button" @click="increment">increment!</button>
+  <h1>회원가입</h1>
+    <input v-model="userName" placeholder="name" />
+    <input v-model.number="age" type="number" placeholder="age" />
+    <input v-model="address" placeholder="address" />
+    <input v-model="phone" placeholder="phone" />
+  <!-- giving data to props 'name', and 'age' -->
+  <UserProfile :name = "userName" :phone = "phone" :address="address"/> 
 </template>
-<style>
-  .blue-color {
-  color: blue;
-}
+<style scoped>
+ 
 </style>
