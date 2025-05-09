@@ -1,15 +1,17 @@
 <script>
 import UserProfile from './components/UserProfile.vue';
+import {THEME_KEY, USER_KEY} from '@/keys';
+
 export default {
 
   components : { 
-    UserProfile
+    UserProfile, 
   }, 
 
  provide() {
   return {
-    theme: 'dark', 
-    user: {
+  [THEME_KEY]: 'dark', 
+    [USER_KEY]: {
       name : 'John', 
       role :  'admin'
     }
@@ -20,7 +22,6 @@ export default {
 </script>
 <template>
   <UserProfile></UserProfile>
-   
 </template>
 <style scoped>
  

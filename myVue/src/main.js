@@ -2,7 +2,7 @@
 import { createApp } from 'vue' 
 import App from './App.vue'
 import FirstChild from './components/FirstChild.vue';
-import HelloWorld from './components/HelloWorld.vue';
+import HelloWorld from './components/SecondChild.vue';
 
 
 const app = createApp(App);
