@@ -9,5 +9,7 @@ const app = createApp(App);
 app.component('FirstChild', FirstChild);
 app.component('HelloWorld', HelloWorld);
 
+
+app.provide('')
 app.mount('#app');
 

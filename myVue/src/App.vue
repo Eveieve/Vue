@@ -6,28 +6,21 @@ export default {
     UserProfile
   }, 
 
-  data() {
-    return {
-      userName : 'John Mayer',
-      age : 25,
-      phone : "",
-      address : "",
-    };
+ provide() {
+  return {
+    theme: 'dark', 
+    user: {
+      name : 'John', 
+      role :  'admin'
+    }
   }
+ }
 }
 
-
 </script>
-
-
 <template>
-  <h1>회원가입</h1>
-    <input v-model="userName" placeholder="name" />
-    <input v-model.number="age" type="number" placeholder="age" />
-    <input v-model="address" placeholder="address" />
-    <input v-model="phone" placeholder="phone" />
-  <!-- giving data to props 'name', and 'age' -->
-  <UserProfile :name = "userName" :phone = "phone" :address="address"/> 
+  <UserProfile></UserProfile>
+   
 </template>
 <style scoped>
  

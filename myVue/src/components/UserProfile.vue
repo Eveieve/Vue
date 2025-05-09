@@ -1,38 +1,20 @@
 <script>
 export default {
-    props : {
-        name : {
-            type : String, 
-            required: true, 
-            validator : function (value){
-                return value.length > 2;
-            },
-        },
-    
-        age : {
-            type: Number, 
-            default : function() {
-                return 25;
-            }
-        },
+   
+   inject : ['theme', 'user'], // 자식이 데이터를 받아오기 위해 
 
-        address : {
-            type: String, 
-        }, 
-        
-        phone : {
-            type : String,
-            validator : function(value) {
-                return value.length >13;
-            }
-        }
-    }
+   created() {
+    console.log('created!');
+
+   },
+   mounted() {
+    console.log(this.theme); // 부모에게서 받은 것을 사용하기 
+    console.log(this.user.name);
+   }
 }
 </script>
 
 <template>
-<p>name : {{ name }}</p>
-<p>age : {{ age }}</p>
-<p>phone : {{ phone }}</p>
-<p>address : {{ address }}</p>
+    <!-- 최소한의 템플릿 없으면 렌더링 되지 않을 수도 있음  -->
+    <div>User Profile</div> 
 </template>
