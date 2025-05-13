@@ -30,6 +30,7 @@ export default {
 
 <template>
     <!-- 최소한의 템플릿 없으면 렌더링 되지 않을 수도 있음  -->
-    <div>User Profile</div> 
+    <div>User Profile</div>
+    <div>{{ theme }}</div>
     <SecondChild/>
 </template>

@@ -71,10 +71,10 @@ export default {
       if(this.operator !== null) {
         this.prev = this.operatorActions[this.operator](this.prev, this.cur);
         // 등호면 연산 결과 노출 
-        if (n === '=') {
+        if (n === '=') { // 계산한다. 
           this.output = this.prev;
           this.operator = null;
-          this.cur = this.prev;
+          this.cur = this.prev; // 이전값을 가져와야 연산이 이어질 수 있음 
         } else {
           this.output = null;
           this.operator = n;
