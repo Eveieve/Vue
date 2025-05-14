@@ -7,8 +7,8 @@ const reactiveDoubleCount = computed(() => reactiveCount.count * 2);
 //1초 뒤에 refCount와 reactiveCount의 count 속성의 값을 변경함
 //그러면 이를 참조해서 계산하는 computed() 함수의 데이터도 함께 자동 변경됨
 setTimeout(() => {
-  refCount.value = 10;
-  reactiveCount.count = 20;
+  refCount.value = 10; // 원시값.value
+  reactiveCount.count = 20; // 객체 안에 count라는 키 
 }, 1000);
 </script>
 <template>

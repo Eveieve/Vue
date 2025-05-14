@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, watch } from 'vue';
+import { reactive, watch } from 'vue';
 const state = reactive({
   count: 0,
 });
