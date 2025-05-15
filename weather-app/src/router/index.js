@@ -10,14 +10,21 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/forecast',
+      name: 'forecast',
+      component: () => import('../views/ForecastView.vue')
+    }, 
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/SearchView.vue')
+    }, {
+      path: '/new', 
+      name: 'new', 
+      component: () => import('../views/NewView.vue')
     }
+  
   ]
 })
 
-export default router
+export default router // 등록한 세개의 라우터 객체들을 외부로 보냄 
